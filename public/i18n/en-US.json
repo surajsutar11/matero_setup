@@ -4,6 +4,7 @@
     "design": "Design",
     "design.colors": "Color System",
     "design.icons": "Material Icons",
+
     "permissions": "Permissions",
     "permissions.role-switching": "Role Switching",
     "permissions.route-guard": "Route Guard",
