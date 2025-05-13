@@ -2,17 +2,18 @@
   "menu": [
     {
       "route": "dashboard",
-      "name": "dashboard",
+      "name": "Dashboard",
       "type": "link",
       "icon": "dashboard",
       "badge": {
         "color": "red-50",
         "value": "5"
       }
-    },
+    }],
+    "masters":[
     {
-      "route": "/",
-      "name": "sessions",
+      "route": "",
+      "name": "Sessions",
       "type": "sub",
       "icon": "question_answer",
       "children": [
@@ -29,6 +30,29 @@
         {
           "route": "500",
           "name": "500",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "masters",
+      "name": "masters",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "menu-master",
+          "name": "Menu Master",
+          "type": "link"
+        },
+        {
+          "route": "menu-mapping",
+          "name": "Menu Mapping",
+          "type": "link"
+        },
+        {
+          "route": "role-mapping",
+          "name": "Role Mapping",
           "type": "link"
         }
       ]

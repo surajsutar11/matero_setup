@@ -8,7 +8,14 @@
     "permissions": "Permissions",
     "permissions.role-switching": "Role Switching",
     "permissions.route-guard": "Route Guard",
-    "permissions.test": "Permission Test"
+    "permissions.test": "Permission Test",
+
+    "sessions":"Sessions",
+    "masters":"Master",
+    "masters.menu-mapping":"Menu Mapping",
+    "masters.menu-master":"Menu Master",
+    "masters.role-master":"Role Master",
+    "masters.role-mapping":"Role Mapping"
   },
   "validation": {
     "required": "This field is required",
