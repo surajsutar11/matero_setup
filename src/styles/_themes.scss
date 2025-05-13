@@ -3,19 +3,110 @@
 html {
   color-scheme: light;
 
-  @include mat.theme((
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0
-  ));
+  @include mat.theme((color: (primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0));
 }
 
 .theme-dark {
   color-scheme: dark;
 }
-.mat-mdc-dialog-surface{
+
+.mat-mdc-dialog-surface {
   border-radius: 5px !important;
 }
+
+/*dialog Css*/
+.dialog_header {
+  background-color: skyblue;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-top: 6px;
+  color: White;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.close_button {
+  margin: 0px 5px;
+  border-radius: 50%;
+  height: 23px;
+  width: 23px;
+  border: 2px solid white;
+  background: none;
+  color: white;
+  padding: 0px;
+}
+
+.dialog_content {
+  min-height: auto;
+  margin: 15px 10px;
+}
+
+.dialog_footer {
+  background-color: #efedf0;
+  height: 47px;
+  display: flex;
+  justify-content: end;
+  padding: 0px 5px;
+  color: White;
+  border-radius: 0px 0px 5px 5px;
+  border-top: 1px solid #00000024;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dialog_box {
+  border: 1px solid white;
+}
+
+.cancel-button,
+.save-button {
+  margin-left: 10px !important;
+  height: 35px !important;
+  padding: 5px 14px !important;
+  border-radius: 5px !important;
+  background: var(--mat-sys-primary-container) !important;
+}
+
+.cancel-button {
+  // background: var(--mtx-alert-danger-background-color, light-dark(#ffdad4, #690100))
+  border-color: var(--mtx-alert-danger-outline-color, light-dark(#ffb4a8, #c00100)) !important;
+  background-color: var(--mtx-alert-danger-background-color, light-dark(#ffdad4, #690100)) !important;
+  color: var(--mtx-alert-danger-text-color, light-dark(#690100, #ffdad4)) !important;
+}
+
+.mat-icon {
+  height: 24px;
+  width: 24px;
+  font-size: 14px;
+  border: 50%;
+  margin-left: -3px;
+  padding: 2px 6px;
+}
+
+.dialog_content>div {
+  margin-right: 0px !important;
+}
+
+/*dialog Css*/
+
+.mdc-data-table__row {
+  height: 35px !important;
+}
+
+.striped-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.striped-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+// .striped-table tr:hover {
+//   background-color: #e0f7fa; 
+// }

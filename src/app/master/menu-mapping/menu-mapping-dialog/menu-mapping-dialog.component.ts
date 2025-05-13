@@ -102,12 +102,10 @@ export class MenuMappingDialogComponent {
   }
 
   isChecked(menuId: number): boolean {
-    debugger;
     return this.selectedMenus.includes(menuId);
   }
 
   toggleSelection(menuId: number) {
-    debugger;
     if (this.selectedMenus.includes(menuId)) {
       this.selectedMenus = this.selectedMenus.filter((id) => id !== menuId);
     } else {

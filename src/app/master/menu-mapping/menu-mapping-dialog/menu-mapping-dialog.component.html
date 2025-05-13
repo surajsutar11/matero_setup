@@ -7,7 +7,8 @@
     </div>
     <div class="dialog_content">
         <div class="row">
-            <div class="col-sm-4"> <mat-form-field appearance="outline" class="w-full mb-4">
+            <div class="col-sm-4">
+                 <mat-form-field appearance="outline" class="w-full mb-4">
                     <mat-label>Select Role</mat-label>
                     <mat-select (selectionChange)="onRoleChange($event.value)">
                         <mat-option *ngFor="let role of roles" [value]="role.id">
@@ -15,15 +16,24 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div><div class="col-sm-8" *ngIf="!loading">
-                <mat-selection-list [multiple]="true" [(ngModel)]="selectedMenus">
+            </div>
+            <div class="col-sm-8" *ngIf="!loading">
+                <!-- <mat-selection-list [multiple]="true" [(ngModel)]="selectedMenus">
                     <mat-list-option *ngFor="let menu of menus" [value]="menu.id"
                         (click)="toggleSelection(menu.id)">
                         {{ menu.menuName }}
                     </mat-list-option>
-                </mat-selection-list>
+                </mat-selection-list> -->
+                <mat-form-field appearance="outline" class="w-full mb-4">
+                    <mtx-select [items]="menus" bindLabel="menuName" bindValue="id"
+                        [multiple]="true" [(ngModel)]="selectedMenus">
+                    </mtx-select>
+
+                    <mat-hint>Choose your favorite menu</mat-hint>
+                    <!-- <mat-error *ngIf="!selectedMenus.length">Please choose a menu</mat-error> -->
+                </mat-form-field>
             </div>
-            <div class="col-sm-4"*ngIf="loading">Loading Menus...</div>           
+            <div class="col-sm-4" *ngIf="loading">Loading Menus...</div>
         </div>
     </div>
     <div class="dialog_footer">
