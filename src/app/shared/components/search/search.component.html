@@ -1,0 +1,12 @@
+<div class="search-field d-xl-block">
+  <form class="d-flex align-items-center h-100" action="#">
+    <mat-form-field appearance="outline" class="search_button w-100">
+      <mat-label>{{ placeholder }}</mat-label>
+      <input matInput type="text" name="searchText" [(ngModel)]="searchText"
+        placeholder="{{ placeholder }}" (input)="onInputChange()" />
+      <button mat-icon-button matSuffix (click)="onSearchClick()" aria-label="Search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+</div>

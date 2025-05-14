@@ -10,6 +10,7 @@ import { RoleMappingDialogComponent } from './role-mapping/role-mapping-dialog/r
 import { RoleMasterComponent } from './role-master/role-master.component';
 import { RoleMasterDialogComponent } from './role-master/role-master-dialog/role-master-dialog.component';
 import { MenuMasterDialogComponent } from './menu-master/menu-master-dialog/menu-master-dialog.component';
+import { SearchComponent } from '@shared/components/search/search.component';
 
 @NgModule({
   declarations: [],
@@ -23,7 +24,8 @@ import { MenuMasterDialogComponent } from './menu-master/menu-master-dialog/menu
     RoleMasterComponent,
     RoleMasterDialogComponent,
     RoleMappingComponent,
-    RoleMappingDialogComponent
+    RoleMappingDialogComponent,
+    SearchComponent
   ]
 })
 export class MasterModule { }

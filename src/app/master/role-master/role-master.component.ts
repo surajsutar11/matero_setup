@@ -4,15 +4,17 @@ import { RoleMasterService } from './role-master.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { SharedModule } from '@shared/shared/shared.module';
+import { SearchComponent } from '@shared/components/search/search.component';
 
 @Component({
   selector: 'app-role-master',
   templateUrl: './role-master.component.html',
   styleUrl: './role-master.component.scss',
-  imports: [SharedModule],
+  imports: [SharedModule,SearchComponent],
 })
 export class RoleMasterComponent {
  displayedColumns: string[] = ['id', 'roleName', 'description', 'actions'];
+ searchFieldPlaceHolder: string = 'Search User /Menu';
   dataSource = new MatTableDataSource([]);
   constructor(private dialog: MatDialog, private roleService: RoleMasterService) {}
   ngOnInit() {
@@ -43,4 +45,6 @@ export class RoleMasterComponent {
       this.fetchRoles();
     });
   }
+
+   filterTableBySearchText(searchText: string | null) {}
 }
