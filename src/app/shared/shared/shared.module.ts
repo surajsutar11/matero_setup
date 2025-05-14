@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MtxGridModule } from '@ng-matero/extensions/grid';
 
 const SharedModules = [
   CommonModule,
@@ -57,7 +58,8 @@ const SharedModules = [
     MatBadgeModule,
     MatChipsModule,
     MatRippleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MtxGridModule
 ];
 
 @NgModule({

@@ -1,64 +1,32 @@
-
-<div class="row">
-    <h3 class="font-weight-bold mb-2 page-heading">Role Master</h3>
-</div>
-<div class="row table_top_section">
-        <div class="col-3 col-md-3 col-xm-3">
-          <app-search
-            (onSearch)="filterTableBySearchText($event)"
-            [placeholder]="searchFieldPlaceHolder"
-          ></app-search>
-        </div>
-        <div class="col-9 col-md-9 col-xm-9 d-flex justify-content-end">
-          <div class="table_top_left">
-            <button
-              type="button"
-              class="btn btn-outline-primary btn-rounded btn-icon btn-sm"
-              data-bs-placement="bottom"
-              ata-bs-toggle="tooltip"
-            >
-             <mat-icon>add</mat-icon>
-            </button>
-          </div>
-        </div>
+<div class="card">
+  <div class="card_body">
+    <div class="row mb-2">
+      <div class="col-md-9">
+        <h3 class="font-weight-bold page-heading">Role Master</h3>
       </div>
-<div>
-  <table mat-table [dataSource]="dataSource" class="striped-table">
-    
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
-    <!-- Role Name Column -->
-    <ng-container matColumnDef="roleName">
-      <th mat-header-cell *matHeaderCellDef> Role Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.roleName}} </td>
-    </ng-container>
-
-    <!-- Description Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
-
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="openDialog(element)">
-          <mat-icon class="edit-icon">edit</mat-icon>
+      <div class="col-md-3 text-right">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openDialog()"
+        >
+          <mat-icon>add</mat-icon> Add Role
         </button>
-        <button mat-icon-button color="warn" (click)="deleteRole(element.id)">
-          <mat-icon class="delete-icon">delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+      </div>
+    </div>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+    <mtx-grid
+      [columns]="displayedColumns"
+      [data]="dataSource"
+      [loading]="true"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25]"
+      [paginator]="true"
+      [length]="totalCount"
+      [showToolbar]="false"
+      [sortable]="true"
+      [pagination]="true" 
+    >
+    </mtx-grid>
+  </div>
 </div>
-

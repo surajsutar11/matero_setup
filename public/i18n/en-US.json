@@ -12,10 +12,10 @@
 
     "sessions":"Sessions",
     "masters":"Master",
-    "masters.menu-mapping":"Menu Mapping",
+    "masters.user-role-mapping":"User Role Mapping",
     "masters.menu-master":"Menu Master",
     "masters.role-master":"Role Master",
-    "masters.role-mapping":"Role Mapping"
+    "masters.role-menu-mapping":"Role Menu Mapping"
   },
   "validation": {
     "required": "This field is required",

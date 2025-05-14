@@ -38,6 +38,21 @@ export class RoleMasterService {
         roleName: 'Finance',
         description: 'Access to billing, invoicing, and financial reports.',
       },
+      {
+        id: 6,
+        roleName: 'Manager',
+        description: 'Access to team management and reports.',
+      },
+      {
+        id: 7,
+        roleName: 'HR',
+        description: 'Access to employee information and attendance tracking.',
+      },
+      {
+        id: 8,
+        roleName: 'Finance',
+        description: 'Access to billing, invoicing, and financial reports.',
+      },
     ]);
   }
   addRole(role: any): Observable<any> {

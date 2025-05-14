@@ -1,110 +1,61 @@
-import { Component } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MenuMasterService } from '../menu-master.service';
+import { MenuMaster } from '../menu-master.component';
 import { SharedModule } from '@shared/shared/shared.module';
-import { MenuMappingDialogComponent } from 'app/master/menu-mapping/menu-mapping-dialog/menu-mapping-dialog.component';
-import { MenuMappingService } from 'app/master/menu-mapping/menu-mapping.service';
 
 @Component({
   selector: 'app-menu-master-dialog',
   templateUrl: './menu-master-dialog.component.html',
-  styleUrl: './menu-master-dialog.component.scss',
+  styleUrls: ['./menu-master-dialog.component.scss'],
   imports: [SharedModule],
 })
-export class MenuMasterDialogComponent {
-  colorSave: ThemePalette = 'primary';
-  colorClose: ThemePalette = 'warn';
-  roles: any[] = [
-    {
-      id: 1,
-      name: 'Admin',
-      description: 'Full access to all modules and settings.',
-    },
-    {
-      id: 2,
-      name: 'User',
-      description: 'Limited access to dashboard and profile settings.',
-    },
-    {
-      id: 3,
-      name: 'Manager',
-      description: 'Access to team management and reports.',
-    },
-    {
-      id: 4,
-      name: 'HR',
-      description: 'Access to employee information and attendance tracking.',
-    },
-    {
-      id: 5,
-      name: 'Finance',
-      description: 'Access to billing, invoicing, and financial reports.',
-    },
-  ];
-  menus: any[] = [];
-  selectedRoleId: number | null = null;
-  selectedMenus: number[] = [];
-  loading: boolean = false;
-  dialogHeader: string = "Menu Mapping"
-  constructor(private menuMappingService: MenuMappingService,
-    private dialogRef: MatDialogRef<MenuMappingDialogComponent>
-  ) { }
+export class MenuMasterDialogComponent implements OnInit {
+  menuForm: FormGroup;
+  dialogHeader: string = 'Menu Master';
+  mainMenus: MenuMaster[] = [];
 
-  ngOnInit(): void {
-    this.loadRoles();
-  }
-
-  loadRoles() {
-    this.menuMappingService.getRoles().subscribe((data) => {
-      this.roles = data;
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<MenuMasterDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: MenuMaster,
+    private menuService: MenuMasterService
+  ) {
+    this.menuForm = this.fb.group({
+      id: [data?.id || null],
+      menuName: [data?.menuName || '', Validators.required],
+      menuType: [data?.menuType || '', Validators.required],
+      parentMenuId: [data?.parentMenuId || null],
+      menuPath: [data?.menuPath || '', Validators.required],
+      menuIcon: [data?.menuIcon || '', Validators.required],
+      isDefault: [data?.isDefault || false],
+      isActive: [data?.isActive || false],
     });
   }
 
-  onRoleChange(roleId: number) {
-    this.selectedRoleId = roleId;
-    this.loading = true;
-    // this.menuMappingService.getMenuMapping(roleId).subscribe((data) => {
-    const data = [
-      {
-        id: 1,
-        name: 'Admin',
-        description: 'Full access to all modules and settings.',
-      },
-      {
-        id: 2,
-        roleName: 'User',
-        description: 'Limited access to dashboard and profile settings.',
-      },
-      {
-        id: 3,
-        roleName: 'Manager',
-        description: 'Access to team management and reports.',
-      },
-      {
-        id: 4,
-        roleName: 'HR',
-        description: 'Access to employee information and attendance tracking.',
-      },
-      {
-        id: 5,
-        roleName: 'Finance',
-        description: 'Access to billing, invoicing, and financial reports.',
-      },
-    ]
-    this.selectedMenus = data.map((menu: any) => menu.id);
-    this.loading = false;
-    // });
+  ngOnInit(): void {
+    this.menuService.getAllMenus().subscribe((menus) => {
+      this.mainMenus = menus.filter((menu) => menu.menuType === 1);
+    });
   }
-  saveMapping() {
-    if (this.selectedRoleId !== null) {
-      this.menuMappingService
-        .saveMenuMapping(this.selectedRoleId, this.selectedMenus)
-        .subscribe(() => {
-          alert('Menu Mapping Saved Successfully!');
+
+  saveData() {
+    if (this.menuForm.valid) {
+      const menuData = this.menuForm.value;
+      if (menuData.id) {
+        this.menuService.updateMenu(menuData).subscribe(() => {
+          this.dialogRef.close(true);
         });
+      } else {
+        this.menuService.createMenu(menuData).subscribe(() => {
+          this.dialogRef.close(true);
+        });
+      }
     }
   }
+
   cancelDialog() {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 }

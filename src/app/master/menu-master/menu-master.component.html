@@ -1,1 +1,28 @@
-<p>menu-master works!</p>
+<div class="card">
+  <div class="card_body">
+    <div class="row mb-2">
+      <div class="col-md-9">
+        <h3 class="font-weight-bold page-heading">Menu Master</h3>
+      </div>
+      <div class="col-md-3 text-right">
+        <button mat-raised-button color="primary" (click)="openDialog()">
+          <mat-icon>add</mat-icon> Add Menu
+        </button>
+      </div>
+    </div>
+
+    <mtx-grid
+      [columns]="displayedColumns"
+      [data]="dataSource"
+      [loading]="loading"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25]"
+      [paginator]="true"
+      [length]="totalCount"
+      [showToolbar]="false"
+      [sortable]="true"
+      [pagination]="true"
+    >
+    </mtx-grid>
+  </div>
+</div>

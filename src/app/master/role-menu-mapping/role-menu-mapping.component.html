@@ -1,0 +1,80 @@
+
+
+<div class="card">
+  <div class="card_body">
+    <div class="row mb-2">
+      <div class="col-md-9">
+        <h3 class="font-weight-bold page-heading">Role Menu Mapping</h3>
+      </div>
+      <div class="col-md-3 text-right">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openDialog(null)"
+        >
+          <mat-icon>add</mat-icon> New Role Menu Mapping
+        </button>
+      </div>
+    </div>
+
+    <mtx-grid
+      [columns]="displayedColumns"
+      [data]="dataSource"
+      [loading]="true"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25]"
+      [paginator]="true"
+      [length]="totalCount"
+      [showToolbar]="false"
+      [sortable]="true"
+      [pagination]="true" 
+    >
+    </mtx-grid>
+  </div>
+</div>
+<!-- 
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="full-width-table striped-table table_section">
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="roleId">
+      <th mat-header-cell *matHeaderCellDef> Role Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.role.roleName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="menuId">
+      <th mat-header-cell *matHeaderCellDef> Menu Name </th>
+      <td mat-cell *matCellDef="let element"> <ng-container *ngFor="let menu of element.menu; let i = index">
+      {{ menu.menuName }}<span *ngIf="i < element.menu.length - 1">, </span>
+    </ng-container></td>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef> Is Active </th>
+      <td mat-cell *matCellDef="let element">
+        {{element.isActive ? 'Yes' : 'No'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="action_button" (click)="openDialog(element)">
+          <mat-icon class="edit-icon">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="action_button" (click)="deleteMapping(element.id)">
+          <mat-icon class="delete-icon">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+</div> -->

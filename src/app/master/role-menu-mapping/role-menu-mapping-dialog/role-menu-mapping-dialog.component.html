@@ -1,0 +1,54 @@
+<div class="dialog_box">
+  <form [formGroup]="mappingForm">
+    <div class="dialog_header">
+      <div class="header">{{ dialogHeader }}</div>
+      <button class="close_button" (click)="cancelDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <div class="dialog_content">
+      <div class="row">
+        <div class="col-sm-4">
+          <!-- Role ID - Single Select -->
+          <mat-form-field appearance="outline" class="w-full mb-4">
+            <mat-label>Role Name</mat-label>
+            <mat-select formControlName="roleId" required>
+              <mat-option *ngFor="let role of roleList" [value]="role.id">
+                {{ role.roleName }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="mappingForm.get('roleId')?.hasError('required')">Role is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-8">
+          <mat-form-field appearance="outline" class="w-full mb-4">
+            <mat-label>Menus</mat-label>
+            <mat-select formControlName="menuId" multiple>
+              <mat-option *ngFor="let menu of menuList" [value]="menu.id">
+                {{ menu.menuName }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="mappingForm.get('menuId')?.hasError('required')">At least one Menu is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-4">
+          <mat-checkbox formControlName="isActive">Is Active</mat-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog_footer">
+      <button mat-raised-button color="primary" (click)="saveData()" [disabled]="mappingForm.invalid" class="save-button">
+        Save Mapping
+      </button>
+      <button mat-raised-button color="warn" (click)="cancelDialog()"  class="cancel-button">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

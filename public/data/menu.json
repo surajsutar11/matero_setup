@@ -42,8 +42,8 @@
           "icon": "colorize"
         },
         {
-          "route": "menu-mapping",
-          "name": "menu-mapping",
+          "route": "user-role-mapping",
+          "name": "user-role-mapping",
           "type": "link",
           "icon": "colorize"
         },
@@ -54,8 +54,8 @@
           "icon": "colorize"
         },
         {
-          "route": "role-mapping",
-          "name": "role-mapping",
+          "route": "role-menu-mapping",
+          "name": "role-menu-mapping",
           "type": "link",
           "icon": "colorize"
         }

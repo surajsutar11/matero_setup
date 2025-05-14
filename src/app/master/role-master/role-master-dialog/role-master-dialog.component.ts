@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SharedModule } from '@shared/shared/shared.module';
-import { MenuMappingDialogComponent } from 'app/master/menu-mapping/menu-mapping-dialog/menu-mapping-dialog.component';
-import { MenuMappingService } from 'app/master/menu-mapping/menu-mapping.service';
-import { RoleMappingService } from 'app/master/role-mapping/role-mapping.service';
+import { RoleMenuMappingService } from 'app/master/role-menu-mapping/role-menu-mapping.service';
 
 @Component({
   selector: 'app-role-master-dialog',
@@ -19,8 +17,8 @@ export class RoleMasterDialogComponent {
   loading: boolean = false;
   dialogHeader: string = "Role Master"
   roleForm: FormGroup;
-  constructor(private roleMappingService: RoleMappingService,
-    private dialogRef: MatDialogRef<MenuMappingDialogComponent>,
+  constructor(private roleMappingService: RoleMenuMappingService,
+    private dialogRef: MatDialogRef<RoleMasterDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
   ) {
